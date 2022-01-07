@@ -1,4 +1,3 @@
-/* eslint-disable no-continue */
 /* *******************************************************************************************
  *                                                                                           *
  * Please read the following tutorial before implementing tasks:                              *
@@ -220,36 +219,24 @@ function getRectangleString(width, height) {
     for (let w = 1; w <= width; w += 1) {
       if (w === 1 && h === 1) {
         result += charts.topleft;
-        continue;
-      }
-      if (w === width && (h === 1)) {
+      } else if (w === width && (h === 1)) {
         result += charts.topright;
         result += charts.end;
-        continue;
-      }
-      if (w === 1 && h === height) {
+      } else if (w === 1 && h === height) {
         result += charts.bottomleft;
-        continue;
-      }
-      if (w === width && (h === height)) {
+      } else if (w === width && (h === height)) {
         result += charts.bottomright;
         result += charts.end;
-        continue;
-      }
-      if (w === 1) {
+      } else if (w === 1) {
         result += charts.leftright;
-        continue;
-      }
-      if (w === width) {
+      } else if (w === width) {
         result += charts.leftright;
         result += charts.end;
-        continue;
-      }
-      if (h === 1 || h === height) {
+      } else if (h === 1 || h === height) {
         result += charts.topbottom;
-        continue;
+      } else {
+        result += charts.space;
       }
-      result += charts.space;
     }
   }
   return result;
@@ -284,17 +271,13 @@ function encodeToRot13(str) {
       if (bigLetter[posNewChar] === undefined) {
         result += bigLetter[posNewChar - bigLetter.length];
       } else result += bigLetter[posNewChar];
-      continue;
-    }
-    if (smallLetter.indexOf(str[i]) !== -1) {
+    } else if (smallLetter.indexOf(str[i]) !== -1) {
       const index = smallLetter.indexOf(str[i]);
       const posNewChar = index + addPos;
       if (smallLetter[posNewChar] === undefined) {
         result += smallLetter[posNewChar - smallLetter.length];
       } else result += smallLetter[posNewChar];
-      continue;
-    }
-    result += str[i];
+    } else result += str[i];
   }
   return result;
 }
